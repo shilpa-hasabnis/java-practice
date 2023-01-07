@@ -1,0 +1,66 @@
+package arrayList;
+
+
+	import java.io.*;
+	import java.math.*;
+	import java.security.*;
+	import java.text.*;
+	import java.util.*;
+	import java.util.concurrent.*;
+	import java.util.regex.*;
+	import java.util.Arrays;
+	import java.util.List;
+	import java.util.Set;
+	import java.util.stream.Collectors;
+
+	class Result {
+
+	    /*
+	     * Complete the 'missingNumbers' function below.
+	     *
+	     * The function is expected to return an INTEGER_ARRAY.
+	     * The function accepts following parameters:
+	     *  1. INTEGER_ARRAY arr
+	     *  2. INTEGER_ARRAY brr
+	     */
+
+	    public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+	    // 2357 //234567
+	    List<Integer>ret= new ArrayList<>();
+	    List<Integer> ar=arr.stream().distinct().sorted().collect(Collectors.toList());
+	    List<Integer> br=brr.stream().distinct().sorted().collect(Collectors.toList());
+	    int mlen=Math.max(ar.size(),br.size());
+	    for(int i=0;i<mlen;i++){
+	        if(ar.get(i)!=br.get(i)){
+	            ret.add(br(i));
+	        }
+	    }
+	    return ret;
+	    }
+
+	}
+
+	public class MissingNumberStream {
+	    public static void main(String[] args) throws IOException {
+	       int[] arr= {7,2,5,3,5,3};
+	       List<Integer> ar=new ArrayList<>();
+	       List <Integer> br= new ArrayList<>();
+	       int brr[]= {7,2,5,4,6,3,5,3};
+	       for(int i=0;i<arr.length;i++) {
+	    	   ar.add(arr[i]);
+	       }
+	       for(int i=0;i<brr.length;i++) {
+	    	   br.add(brr[i]);
+	       }
+
+	        List<Integer> result = Result.missingNumbers(ar, br);
+
+	        for (int i = 0; i < result.size(); i++) {
+	            System.out.println(result.get(i));
+
+	            if (i != result.size() - 1) {
+	            	 System.out.println(" ");
+	            }
+	        }
+	    }
+	}

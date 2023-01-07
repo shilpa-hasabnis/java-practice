@@ -1,0 +1,46 @@
+package arrays;
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+// don't change the name of this class
+// you can add inner classes if needed
+class RotationalArray {
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t=sc.nextInt();
+
+		for(int k=0; k<t; k++){
+			int n=sc.nextInt();
+			int  arr[] = new int[n];
+			for(int i=0;i<n;i++)
+			{
+				arr[i]=sc.nextInt();
+			}
+			System.out.println();
+			System.out.println(minElement(arr));
+		} 	
+	}
+	public static int minElement(int arr[]) {
+		int low = 0;
+		int high = arr.length -1;
+		if (arr[low] < arr[ high] || arr.length  == 1 ){
+			return arr[0];
+		}
+		while( high >= low )
+		{
+			int mid = low + (high - low) / 2;
+			if (arr[mid] > arr[mid + 1]){
+				return arr[mid + 1 ];
+			}
+			if(arr[mid-1] > arr[mid]) {
+				return arr[mid];
+			}
+			if (arr[mid] > arr[0]){
+				low  = mid + 1;
+			}  
+			else{
+				high = mid - 1;
+			}
+		}
+		return -1;
+	}
+}

@@ -1,0 +1,48 @@
+package hackerRankCG;
+
+import java.util.*;
+
+public class DivisorMultiplies {
+
+	public static void main(String[] args) {
+		int[] ar= {5,2,4,3,7};
+		List<Integer>li=new ArrayList<>();
+		li.add(5);
+		li.add(2);
+		li.add(4);
+		li.add(3);
+		li.add(7);
+
+		List<Integer>res=cl(li);
+		res.stream().forEach(System.out::println);
+		
+		}
+
+	private static List<Integer> cl(List<Integer> li) {
+		List<Integer>res=new ArrayList<>();
+
+		for(int i=0;i<li.size();i++) {
+			int div=0,mult=0;
+			int t=li.get(i);
+			for(int j=0;j<li.size();j++) {
+				int s=li.get(j);
+				if(t%s==0) {
+					if(t==s) {
+						div--;
+					}
+					div++;
+				}
+				if(s%t==0) {
+					if(s==t) {
+						div--;
+					}
+					mult++;
+				}
+			}
+			int re=Math.abs(mult-div);
+			res.add(re);
+		}
+		return res;
+	}
+
+}

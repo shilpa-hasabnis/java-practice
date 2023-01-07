@@ -1,0 +1,46 @@
+package warmUp;
+public class Emp {
+	    public static void main(String[] args) {
+	      int[] arr={1,13,2,31,17};
+	      int c=countEmpire(arr,arr.length);
+	      System.out.println(c);
+	     }
+	     public static int countEmpire(int[] input1, int input2){
+	    	 int count=0;
+	       for(int i=0;i<input2;i++) {
+	    	   if(isPrime(input1[i])) {
+	    		   if(input1[i]==2||input1[i]==3||input1[i]==5||input1[i]==7) {
+	    			   count--;
+	    		   }
+	    		   int rev=0;
+	    		   while(input1[i]>0) {
+	    			   int remainder = input1[i] % 10;  
+	    			   rev = rev * 10 + remainder;  
+	    			   input1[i] = input1[i]/10;  
+	    		   }
+	    		   if(isPrime(rev)) {
+	    			   count++;
+	    		   }
+	    	   }
+	     }
+		return count;
+	}
+		private static boolean isPrime(int n) {
+			int i,m=0,flag=0;      
+			  m=n/2;      
+			  if(n==0||n==1){  
+			   return false;    
+			  }else{  
+			   for(i=2;i<=m;i++){      
+			    if(n%i==0){      
+			     flag=1;
+			     return false;      
+			    }      
+			   }      
+			   if(flag==0)  { 
+				   return true;
+			   }  
+			  }
+			return false;
+		}
+}

@@ -1,0 +1,109 @@
+package base;
+
+import java.util.ArrayList;
+import java.util.*;
+
+
+public class Solution {
+	class spud{
+		
+
+		private int marketID;
+		private int price;
+		private String spudType;
+		private String producingState;
+		
+		public spud() {
+			super();
+		}
+		public spud(int marketID, int price, String spudType, String producingState) {
+			super();
+			this.marketID = marketID;
+			this.price = price;
+			this.spudType = spudType;
+			this.producingState = producingState;
+		}
+		
+		public int getMarketID() {
+			return marketID;
+		}
+		public void setMarketID(int marketID) {
+			this.marketID = marketID;
+		}
+		
+		public int getPrice() {
+			return price;
+		}
+		public void setPrice(int price) {
+			this.price = price;
+		}
+		public String getSpudType() {
+			return spudType;
+		}
+		public void setSpudType(String spudType) {
+			this.spudType = spudType;
+		}
+		public String getProducingState() {
+			return producingState;
+		}
+		public void setProducingState(String producingState) {
+			this.producingState = producingState;
+		}
+
+	}
+	
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	Solution tsc = new Solution();
+	  spud[] sp = new spud[4];
+	 for(int i = 0; i<4; i++)
+	  {
+	   int id = sc.nextInt(); sc.nextLine();
+	   int price =sc.nextInt(); sc.nextLine();
+	   String spudt = sc.nextLine();
+	   String ps = sc.nextLine();
+	   
+	   sp[i] = tsc.new spud(id, price, spudt, ps);
+	  }
+	
+	sortByprice(sp);
+	for(spud s:sp) {
+	System.out.println(s.getMarketID()+" "+s.spudType+" "+s.getProducingState()+s.price);
+	}
+	String state=sc.nextLine();
+	System.out.print(findTypeByState(state,sp));
+	
+	}
+//	findTypeByState
+//	sortByprice
+
+	private static ArrayList<spud> findTypeByState(String state, spud[] sp) {
+		ArrayList<spud> st=new ArrayList<>();
+		for(int i=0;i<4;i++) {
+			if(sp[i].getProducingState().equals(state)) {
+				st.add(sp[i]);
+			}
+			else {
+				return null;
+			}
+		}
+		return st;
+		
+	}
+
+	private static spud[] sortByprice(spud[] sp) {
+
+		for(int i=0;i<sp.length;i++) {
+			for(int j=0;j<i;j++) {
+				if(sp[i].getPrice()<sp[j].getPrice()) {
+					spud t=sp[i];
+					sp[i]=sp[j];
+					sp[j]=t;
+				}
+			}
+		}
+		return sp;
+		
+		
+	}
+}

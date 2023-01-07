@@ -1,0 +1,46 @@
+package arrayList;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.*;  
+class Rult {
+	public static List<Integer> missingNumbers(List<Integer> arr, List<Integer> brr) {
+		// 2357 //234567
+		List<Integer>ret= new ArrayList<>();
+		Collections.sort(arr);
+		Collections.sort(brr);
+		brr.stream().forEach(System.out::print);
+		arr.stream().forEach(System.out::print);
+
+		for(int i=0;i<brr.size();i++) {
+			if(arr.get(i)==brr.get(i)) {
+				arr.remove(i);
+				brr.remove(i);
+			}else {
+				ret.add(brr.get(i));
+				brr.remove(i);
+			}
+		}
+		return ret;
+	}
+}
+
+public class MissingNumberStream {
+	public static void main(String[] args) throws IOException {
+		int[] arr= {203, 204, 205, 206, 207, 208, 203, 204, 205, 206};
+		List<Integer> ar=new ArrayList<>();
+		List <Integer> br= new ArrayList<>();
+		int brr[]= {203, 204, 204, 205, 206, 207 ,205 ,208 ,203 ,206, 205, 206, 204};
+		for(int i=0;i<arr.length;i++) {
+			ar.add(arr[i]);
+		}
+		for(int i=0;i<brr.length;i++) {
+			br.add(brr[i]);
+		}
+		List<Integer> result = Rult.missingNumbers(ar, br);
+		for (int i = 0; i < result.size(); i++) {
+			System.out.println(result.get(i)+" ");
+		}
+	}
+}

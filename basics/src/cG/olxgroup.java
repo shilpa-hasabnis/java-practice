@@ -1,0 +1,48 @@
+package cG;
+import java.util.*;
+
+public class olxgroup {
+		public static int solution(int[] juice, int[] capacity) {
+	        // write your code in Java SE 8
+			int num = 1 ,j=0,i=0;
+			int len = juice.length;
+	        int[] ju = juice.clone();
+			Arrays.sort(juice);
+			for ( i = 0; i < len; i++) {
+	            int count=1;
+				int sub = capacity[i] - ju[i];
+				int test=1;
+				for (j = 0; j < len-1 && sub > 0; j++) {
+					if (juice[j] == ju[i] && test==1 ) {           
+
+						test=0;
+						continue;
+					}
+					sub = sub- juice[j];
+					if (sub > 0) {
+						count++;
+						continue;
+					} else if (sub == 0) {
+						count++;
+						break;
+					}else{
+						break;
+					}
+				}
+	            
+	            if(num<count){
+	                num=count;
+	            }
+			}
+			return num;
+		}
+	
+	public static void main(String[] args) {
+		int[] juice=new int [] {1, 2, 3, 4};
+		int [] capacity =new int[] {3, 6, 4, 4};
+		int num=solution(juice,capacity);
+		System.out.println(num);
+		
+	}
+
+}

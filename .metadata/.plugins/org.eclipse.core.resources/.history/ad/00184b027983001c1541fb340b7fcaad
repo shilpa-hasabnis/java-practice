@@ -1,0 +1,24 @@
+package hackerRankCG;
+
+import java.util.Arrays;
+
+public class BinSearchIndex {
+	public static void main(String[] args) {
+		int[] A= {3,5,5,3,3,1};
+		int b=solution(A);
+		System.out.println(b);
+	}
+
+	private static int solution(int[] a) {
+		int count=0;
+		for(int i=0;i<a.length;i++) {
+			for(int j=1;i<a.length-1;j++) {
+			int item=Arrays.binarySearch(a,j,a.length-j, a[i]);
+			if(item>0&&a[i]==a[item]) {
+				count++;
+				}
+			}
+		}
+		return count;
+	}
+}

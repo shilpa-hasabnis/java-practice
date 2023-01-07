@@ -1,0 +1,32 @@
+package cG;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+
+
+import java.util.*;
+
+public class FileHandling  {
+	public static void main(String[] args) throws IOException {
+		
+		Scanner sc= new Scanner(System.in);
+		FileWriter Writer= new FileWriter("file1.txt");
+		String f1=sc.nextLine();
+		Writer.write(f1);
+//		Writer.close();
+		FileWriter Writer2= new FileWriter("file2.txt");
+		 int f2=sc.nextInt();
+		Writer2.write(f2);
+		Writer2.close();
+		Scanner Reader = new Scanner((Readable) Writer);
+        while (Reader.hasNextLine()) {
+            String f1s = Reader.nextLine();
+            System.out.println(f1s);
+        }
+        Reader.close();
+		
+
+
+	}
+}

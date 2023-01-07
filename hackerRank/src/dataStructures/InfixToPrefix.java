@@ -1,0 +1,31 @@
+package dataStructures;
+
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class InfixToPrefix {
+	public static void main (String[] args) {
+		Scanner sc=new Scanner(System.in);
+		StringBuilder nw1= new StringBuilder();
+        StringBuilder nw = new StringBuilder();
+
+		String in=sc.next();
+		char[] chs=in.toCharArray();
+		for(char i : chs) {
+			nw.append(nw1);
+
+//			int ss=nw1.length();
+//			nw1.delete(0, ss);
+			if(i>='A'&&i<='Z') {
+				nw.append(i);
+			}
+			else if(i=='*'||i=='-'||i=='+'||i=='/' ) {
+				nw1.append(i);
+			}
+
+		}
+		System.out.println(nw);
+	}
+}

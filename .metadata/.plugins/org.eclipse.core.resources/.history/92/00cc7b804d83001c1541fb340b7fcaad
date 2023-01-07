@@ -1,0 +1,40 @@
+package hackerRankCG;
+public class QueueElevator {
+	public static void main(String[] args) {
+		int[] A= {40,100,80,20};//0 1 2 3
+		int[] B= {3,2,2,3};
+		int x=5,y=200;
+		System.out.println(solution(A,B,x,y));
+
+	}
+	private static int solution(int[] a, int[] b, int x/*capacity*/, int y/*tol weight*/) {
+		int wei=0;
+		int stop=1;
+		int i=0,n=0;
+		for(i=0 ;i<a.length; i++) {
+			if( n<=x && wei+a[i]<=y) {
+				wei+=a[i];//40//140  
+				stop++;//2//3
+				n++;
+				int next=wei+a[i+1];
+				if(next>y) {
+					wei=0;
+					stop++;
+					n=0;
+				}
+			}
+		}
+		return stop;
+	}
+
+}
+//Queue<Integer> build=new LinkedList<>();
+//Queue<Integer> pass=new LinkedList<>();
+//build.add(3);
+//build.add(2);
+//build.add(2);
+//build.add(3);
+//pass.add(40);
+//pass.add(100);
+//pass.add(80);
+//pass.add(420);
